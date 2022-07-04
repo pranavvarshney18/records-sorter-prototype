@@ -1,4 +1,7 @@
 const express = require("express");
+const db = require("./config/mongoose");
+const Record = require("./models/record");
+const Entry = require("./models/entry");
 const app = express();
 const port = 8000;
 
