@@ -1,6 +1,7 @@
 //get record db
 const { render } = require("ejs");
 const Record = require("../models/record");
+const Entry = require("../models/entry");
 
 module.exports.home = function(req, res){
     Record.find({}, function(err, records){
@@ -31,4 +32,18 @@ module.exports.createRecord = function(req, res){
             return res.redirect("back");
         }
     });
+};
+
+
+module.exports.deleteRecord = function(req, res){
+    //first delete all the entries inside record
+    Entry.deleteMany({record: req.query.record_id}, function(err){
+        if(err){console.log("error in deleting entries while deleting a record: ", err); return;}
+
+    })
+    //now delete the record
+    Record.findByIdAndDelete(req.query.record_id, function(err){
+        if(err){console.log("error in deleting record: ", err); return;}
+        return res.redirect("back");
+    })
 };

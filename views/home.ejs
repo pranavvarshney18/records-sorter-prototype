@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/608e013bb3.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/home.css">
 
 <h1> <%= title %> Page</h1>
@@ -19,15 +20,17 @@
     <ul>
         <% for(let i of record_list){ %>
             <li>
-                <h3> <%= i.name %> </h3>
-                <p> <%= i.date %> </p>
-                <p> <%= i.info %> </p>
+                <h3 style="display:inline-block; margin: 0px; margin-top:15px"> <%= i.name %> </h3> &nbsp; &nbsp;
+                <a href="/entries/record-access/?record_id=<%=i._id%>" style="text-decoration: none;">
+                    <button type="button">Access Record</button>
+                </a> 
+                &nbsp; &nbsp;&nbsp; &nbsp;
+                <a href="/delete-record/?record_id=<%=i._id%>"><i class="fa-regular fa-trash-can" style="color:darkslategray;"></i></a>
+                <br>
+                created on: <b><%= i.date %></b> <br>
+                info: <%= i.info %> 
                 <!-- add id -->
                 <!-- <p> <%= i.id %> </p> -->
-
-                <a href="/entries/record-access/?record_id=<%=i._id%>">
-                    <button type="button">Access Record</button>
-                </a>
             </li>
         <% } %>
     </ul>

@@ -9,6 +9,8 @@ router.use("/entries", require("./entries.js"));
 
 router.get("/", homeController.home);
 router.post("/create-record", homeController.createRecord);
+//to delete a record
+router.get("/delete-record", homeController.deleteRecord);
 
 //check if router is loading properly
 console.log("router loaded");

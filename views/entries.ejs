@@ -1,3 +1,5 @@
+<script src="https://kit.fontawesome.com/608e013bb3.js" crossorigin="anonymous"></script>
+
 <h1> <%= title %> </h1>
 <!-- <p> <%= record_id %> </p> -->
 
@@ -43,7 +45,7 @@
                 model: <b><%= i.model %></b> &nbsp;
                 price: <b>Rs <%= i.price %></b> &nbsp;
                 
-                <a href="/entries/delete-entry/?entry_id=<%=i._id%>">delete</a>
+                <a href="/entries/delete-entry/?entry_id=<%=i._id%>"><i class="fa-regular fa-trash-can" style="color:darkslategray;"></i></a>
             </li>
         <% } %>
     </ul>
