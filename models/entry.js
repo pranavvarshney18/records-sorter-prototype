@@ -12,7 +12,7 @@ const entrySchema = new mongoose.Schema({
         type: String,
     },
     price:{
-        type: String,
+        type: Number,
         required: true,
     },
     record:{

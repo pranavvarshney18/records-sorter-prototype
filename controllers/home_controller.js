@@ -31,10 +31,4 @@ module.exports.createRecord = function(req, res){
             return res.redirect("back");
         }
     });
-
-    // Record.create(req.body, function(err, newRecord){
-    //     if(err){console.log("error in creating the record", err); return;}
-    //     console.log("*** new record created ***", newRecord);
-    //     return res.redirect("back");
-    // });
 };

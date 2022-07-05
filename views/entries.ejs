@@ -1,0 +1,48 @@
+<h1> <%= title %> </h1>
+<!-- <p> <%= record_id %> </p> -->
+
+<h3>add new entry</h3>
+<form action="/entries/create-entry" method="POST">
+    <label for="name">Enter Bidder Name</label>
+    <input type="text" id="name" name="name" placeholder="*mandatory">
+    <label for="make">Enter Make</label>
+    <input type="text" id="make" name="make" placeholder="*optional">
+    <label for="model">Enter Model</label>
+    <input type="text" id="model" name="model" placeholder="*optional">
+    <label for="price">Enter Price</label>
+    <input type="number" id="price" name="price" placeholder="*mandatory">
+    <input type="hidden" name="record" value="<%=record_id%>"> 
+
+    <button type="submit">Create Entry</button>
+</form>
+
+<h3>Enter Field Details To Be Searched</h3>
+<form action="/entries/sort-fields" method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="*optional">
+    <label for="make">Make</label>
+    <input type="text" id="make" name="make" placeholder="*optional">
+    <label for="model">Model</label>
+    <input type="text" id="model" name="model" placeholder="*optional">
+    <label for="price">Price</label>
+    <input type="number" id="price" name="price" placeholder="*optional">
+    <input type="hidden" name="record" value="<%=record_id%>"> 
+
+    <button type="submit">Search</button>
+</form>
+
+
+<div id="entry-list">
+    <% let l1 = 1; %>
+    <ul>
+        <% for(let i of entry_list){ %> 
+            <li>
+                <b>L<%= l1++ %></b> &nbsp;
+                name: <b><%= i.name %></b> &nbsp;
+                make: <b><%= i.make %></b> &nbsp;
+                model: <b><%= i.model %></b> &nbsp;
+                price: <b>Rs <%= i.price %></b> &nbsp;
+            </li>
+        <% } %>
+    </ul>
+</div>

@@ -5,6 +5,7 @@ router.use(express.urlencoded()); //must be added to create and parse a record
 
 //get home_controller location
 const homeController = require("../controllers/home_controller");
+router.use("/entries", require("./entries.js"));
 
 router.get("/", homeController.home);
 router.post("/create-record", homeController.createRecord);

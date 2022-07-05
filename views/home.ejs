@@ -3,9 +3,12 @@
 <h1> <%= title %> Page</h1>
 
 <form action="/create-record" method="POST">
-    <input type="text" name="name" placeholder="Enter Name Of Record" required><br>
-    <input type="date" name="date"><br>
-    <textarea name="info" id="info" name="info" cols="30" rows="2"></textarea><br>
+    <label for="name">Name Of Record</label><br>
+    <input type="text" name="name" id="name" placeholder="Enter Name Of Record" required><br>
+    <label for="date">Date Of Entry</label><br>
+    <input type="date" id="date" name="date"><br>
+    <label for="info">Keypoints</label><br>
+    <textarea name="info" id="info" name="info" cols="30" rows="2" placeholder="*optional"></textarea><br>
     <br><br>
     <button type="submit">Create</button>
 </form>
@@ -16,11 +19,15 @@
     <ul>
         <% for(let i of record_list){ %>
             <li>
-                <p> <%= i.name %> </p>
+                <h3> <%= i.name %> </h3>
                 <p> <%= i.date %> </p>
                 <p> <%= i.info %> </p>
                 <!-- add id -->
                 <!-- <p> <%= i.id %> </p> -->
+
+                <a href="/entries/record-access/?record_id=<%=i._id%>">
+                    <button type="button">Access Record</button>
+                </a>
             </li>
         <% } %>
     </ul>
