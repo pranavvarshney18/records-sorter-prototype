@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 //connecting mongoose to mongdb
-mongoose.connect("mongodb://localhost/record_ver_1_1");
+mongoose.connect("mongodb://localhost/record_ver_1_2");
 //get the connection
 const db = mongoose.connection;
 

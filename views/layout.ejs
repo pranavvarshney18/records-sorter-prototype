@@ -4,6 +4,8 @@
             <%= title %>
         </title>
         <script src="https://kit.fontawesome.com/608e013bb3.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
         <%- style %>
     </head>
     <body>
@@ -15,5 +17,29 @@
 
 
         <%- script %>
+
+
+        <!-- flash and noty  -->
+        <script>
+            <% if(flash.success && flash.success.length > 0){ %>
+                new Noty({
+                    theme: "relax", //themes come preloaded
+                    text: "<%= flash.success %>", //the message to be displayed
+                    type: "success", //type is basically color scheme
+                    layout: "topRight", //where do i want the flash message to be displayed
+                    timeout: 1500, //in how much time i want it to disappear(in milisec)
+                }).show();
+            <% } %>
+
+            <% if(flash.error && flash.error.length > 0){ %>
+                new Noty({
+                    theme: "relax", //themes come preloaded
+                    text: "<%= flash.error %>", //the message to be displayed
+                    type: "error", //type is basically color scheme
+                    layout: "topRight", //where do i want the flash message to be displayed
+                    timeout: 1500, //in how much time i want it to disappear(in milisec)
+                }).show();
+            <% } %>
+        </script>
     </body>
 </html>

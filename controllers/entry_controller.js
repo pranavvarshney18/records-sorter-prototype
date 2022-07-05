@@ -25,7 +25,8 @@ module.exports.home = function(req, res){
 
 module.exports.createEntry = function(req, res){
     Entry.create(req.body, function(err, newEntry){
-        if(err){console.log("error in creating the entry", err); return;}
+        if(err){req.flash("error", "Unable To Create Entry!");console.log("error in creating the entry", err); return;}
+        req.flash("success", "Entry Created Successfully!");
         console.log("*** new entry created ***", newEntry);
         return res.redirect("back");
     })
@@ -55,7 +56,8 @@ module.exports.sortFields = function(req, res){
 
 module.exports.deleteEntry = function(req, res){
     Entry.findByIdAndDelete(req.query.entry_id, function(err){
-        if(err){console.log("error in deleting entry: ", err); return;}
+        if(err){req.flash("error", "Unable To Delete Entry!");console.log("error in deleting entry: ", err); return;}
+        req.flash("success", "Entry Deleted Successfully!");
         return res.redirect("back");
     });
 };

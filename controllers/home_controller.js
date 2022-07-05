@@ -21,6 +21,7 @@ module.exports.createRecord = function(req, res){
 
         //if name is unique
         if(!record){
+            req.flash("success", "New Record Created!");
             Record.create(req.body, function(err, newRecord){
                 if(err){console.log("error in creating the record", err); return;}
                 console.log("*** new record created ***", newRecord);
@@ -28,6 +29,7 @@ module.exports.createRecord = function(req, res){
             });
         }
         else{
+            req.flash("error", "Given Name Already Exists!")
             console.log("the given name already exists, please provide a new one");
             return res.redirect("back");
         }
@@ -43,7 +45,8 @@ module.exports.deleteRecord = function(req, res){
     })
     //now delete the record
     Record.findByIdAndDelete(req.query.record_id, function(err){
-        if(err){console.log("error in deleting record: ", err); return;}
+        if(err){req.flash("error", "Unable To Delete");console.log("error in deleting record: ", err); return;}
+        req.flash("success", "Deleted Successfully!");
         return res.redirect("back");
     })
 };
