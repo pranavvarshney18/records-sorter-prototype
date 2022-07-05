@@ -11,5 +11,7 @@ router.get("/record-access", entryController.home);
 router.post("/create-entry", entryController.createEntry);
 //sort entries
 router.post("/sort-fields", entryController.sortFields);
+//delete entry
+router.get("/delete-entry", entryController.deleteEntry);
 
 module.exports = router;

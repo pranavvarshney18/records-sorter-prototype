@@ -34,7 +34,7 @@
 
 <div id="entry-list">
     <% let l1 = 1; %>
-    <ul>
+    <ul type="none">
         <% for(let i of entry_list){ %> 
             <li>
                 <b>L<%= l1++ %></b> &nbsp;
@@ -42,6 +42,8 @@
                 make: <b><%= i.make %></b> &nbsp;
                 model: <b><%= i.model %></b> &nbsp;
                 price: <b>Rs <%= i.price %></b> &nbsp;
+                
+                <a href="/entries/delete-entry/?entry_id=<%=i._id%>">delete</a>
             </li>
         <% } %>
     </ul>

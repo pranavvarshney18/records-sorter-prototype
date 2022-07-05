@@ -49,5 +49,13 @@ module.exports.sortFields = function(req, res){
     }
     
     return res.redirect(`/entries/record-access/?record_id=${req.body.record}`);
-}
+};
 
+
+
+module.exports.deleteEntry = function(req, res){
+    Entry.findByIdAndDelete(req.query.entry_id, function(err){
+        if(err){console.log("error in deleting entry: ", err); return;}
+        return res.redirect("back");
+    });
+};
